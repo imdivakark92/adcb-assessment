@@ -1,13 +1,13 @@
 import { Roboto } from "next/font/google";
 
+import "../styles/global.css";
+
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "700"],
   style: ["normal", "italic"],
   display: "swap",
 });
-
-import "../styles/global.css";
 
 export default function RootLayout({
   children,

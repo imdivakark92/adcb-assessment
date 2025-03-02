@@ -1,14 +1,9 @@
 import React, { useCallback } from "react";
-import {
-  ActivityIndicator,
-  FlatList,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { ActivityIndicator, FlatList, Text, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Post } from "@ADCB/types";
 import { usePosts } from "@ADCB/hooks";
+import { styles } from "./Posts.styles";
 
 export default function Posts() {
   const { posts, loading, fetchPosts, onRefresh } = usePosts();
@@ -54,30 +49,3 @@ export default function Posts() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  listContainer: {
-    padding: 16,
-    flexGrow: 1,
-    gap: 10,
-  },
-  gradientBorder: {
-    position: "relative",
-    padding: 2,
-    borderRadius: 12,
-    marginBottom: 8,
-  },
-  innerContainer: {
-    backgroundColor: "white",
-    borderRadius: 10,
-    padding: 16,
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginBottom: 4,
-  },
-  loader: {
-    marginVertical: 16,
-  },
-});
