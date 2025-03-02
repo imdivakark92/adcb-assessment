@@ -1,9 +1,25 @@
-import { Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import Posts from "./components/Posts";
 
-export default function Native() {
+export default function Home() {
   return (
-    <View>
-      <Text>Native</Text>
+    <View style={styles.container}>
+      <Posts />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  header: {
+    fontWeight: "bold",
+    marginBottom: 20,
+    fontSize: 36,
+    justifyContent: "center",
+  },
+});
