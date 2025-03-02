@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ADCB/hooks": "*",
+    "@ADCB/types": "*",
     "next": "^14.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-native-web": "^0.19.10"
+    "react-infinite-scroll-component": "^6.1.0"
   },
   "devDependencies": {
     "@ADCB/typescript-config": "*",
