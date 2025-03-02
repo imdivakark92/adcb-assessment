@@ -1,12 +1,11 @@
-"use client";
-
 import { Posts } from "./components/Posts";
 
 export default function Web() {
   return (
-    <div>
-      <h1>ADCB Assessment</h1>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+    <div className="bg-gray-100">
+      <h1 className="text-3xl font-black text-center bg-white  p-4">
+        ADCB Assessment
+      </h1>
       <Posts />
     </div>
   );

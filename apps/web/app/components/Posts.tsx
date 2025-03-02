@@ -19,12 +19,14 @@ export const Posts = () => {
         {posts.map((post: Post) => (
           <div
             key={post.id}
-            className="bg-white shadow-lg rounded-2xl p-6 mb-6 border border-gray-200"
+            className="relative p-[2px] rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mb-8"
           >
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              {post.title}
-            </h3>
-            <p className="text-gray-700">{post.body}</p>
+            <div className="bg-white dark:bg-gray-900 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                {post.title}
+              </h3>
+              <p className="text-gray-700">{post.body}</p>
+            </div>
           </div>
         ))}
       </InfiniteScroll>

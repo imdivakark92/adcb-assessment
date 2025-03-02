@@ -7,6 +7,8 @@ const roboto = Roboto({
   display: "swap",
 });
 
+import "../styles/global.css";
+
 export default function RootLayout({
   children,
 }: Readonly<{
