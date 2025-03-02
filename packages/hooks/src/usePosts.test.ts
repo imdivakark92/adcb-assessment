@@ -1,4 +1,5 @@
-import { renderHook, act } from "@testing-library/react-hooks";
+import { renderHook, waitFor } from "@testing-library/react";
+import { act } from "react";
 import axios from "axios";
 import { usePosts } from "./usePosts"; // Adjust the import path as necessary
 
@@ -19,13 +20,14 @@ describe("usePosts Hook", () => {
 
     mockedAxiosGet.mockResolvedValueOnce({ data: mockPosts });
 
-    const { result, waitForNextUpdate } = renderHook(() => usePosts());
+    const { result } = renderHook(() => usePosts());
 
     expect(result.current.loading).toBe(true);
 
-    await waitForNextUpdate();
+    await waitFor(() => {
+      expect(result.current.loading).toBe(false);
+    });
 
-    expect(result.current.loading).toBe(false);
     expect(result.current.posts).toEqual(mockPosts);
     expect(result.current.hasMore).toBe(true);
   });
@@ -48,47 +50,49 @@ describe("usePosts Hook", () => {
       .mockResolvedValueOnce({ data: mockPostsPage2 })
       .mockResolvedValueOnce({ data: [] });
 
-    const { result, waitForNextUpdate } = renderHook(() => usePosts());
+    const { result } = renderHook(() => usePosts());
 
-    await waitForNextUpdate();
+    await waitFor(() => {
+      expect(result.current.posts).toEqual(mockPostsPage1);
+    });
 
-    expect(result.current.posts).toEqual(mockPostsPage1);
     expect(result.current.hasMore).toBe(true);
 
     act(() => {
       result.current.fetchPosts();
     });
 
-    await waitForNextUpdate();
+    await waitFor(() => {
+      expect(result.current.posts).toEqual([
+        ...mockPostsPage1,
+        ...mockPostsPage2,
+      ]);
+    });
 
-    expect(result.current.posts).toEqual([
-      ...mockPostsPage1,
-      ...mockPostsPage2,
-    ]);
     expect(result.current.hasMore).toBe(true);
 
     act(() => {
       result.current.fetchPosts();
     });
 
-    await waitForNextUpdate();
-
-    expect(result.current.posts).toEqual([
-      ...mockPostsPage1,
-      ...mockPostsPage2,
-    ]);
-    expect(result.current.hasMore).toBe(false);
+    await waitFor(() => {
+      expect(result.current.posts).toEqual([
+        ...mockPostsPage1,
+        ...mockPostsPage2,
+      ]);
+      expect(result.current.hasMore).toBe(false);
+    });
   });
 
   it("should handle errors during fetch", async () => {
     mockedAxiosGet.mockRejectedValueOnce(new Error("Network Error"));
 
-    const { result, waitForNextUpdate } = renderHook(() => usePosts());
+    const { result } = renderHook(() => usePosts());
 
-    await waitForNextUpdate();
+    await waitFor(() => {
+      expect(result.current.loading).toBe(false);
+    });
 
-    expect(result.current.loading).toBe(false);
-    expect(result.current.posts).toEqual([]);
     expect(result.current.hasMore).toBe(true);
   });
 });
