@@ -3,7 +3,7 @@
 export default function Web() {
   return (
     <div>
-      <h1>Web</h1>
+      <h1>ADCB Assessment</h1>
     </div>
   );
 }
