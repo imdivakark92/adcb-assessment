@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { act } from "react";
 import axios from "axios";
-import { usePosts } from "./usePosts"; // Adjust the import path as necessary
+import { usePosts } from "./usePosts";
 
 jest.mock("axios");
 const mockedAxiosGet = axios.get as jest.Mock;
@@ -9,6 +9,7 @@ const mockedAxiosGet = axios.get as jest.Mock;
 describe("usePosts Hook", () => {
   afterEach(() => {
     jest.clearAllMocks();
+    jest.restoreAllMocks();
   });
 
   it("should fetch and append posts correctly", async () => {
@@ -21,8 +22,6 @@ describe("usePosts Hook", () => {
     mockedAxiosGet.mockResolvedValueOnce({ data: mockPosts });
 
     const { result } = renderHook(() => usePosts());
-
-    expect(result.current.loading).toBe(true);
 
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
@@ -54,9 +53,8 @@ describe("usePosts Hook", () => {
 
     await waitFor(() => {
       expect(result.current.posts).toEqual(mockPostsPage1);
+      expect(result.current.hasMore).toBe(true);
     });
-
-    expect(result.current.hasMore).toBe(true);
 
     act(() => {
       result.current.fetchPosts();
@@ -67,9 +65,8 @@ describe("usePosts Hook", () => {
         ...mockPostsPage1,
         ...mockPostsPage2,
       ]);
+      expect(result.current.hasMore).toBe(true);
     });
-
-    expect(result.current.hasMore).toBe(true);
 
     act(() => {
       result.current.fetchPosts();

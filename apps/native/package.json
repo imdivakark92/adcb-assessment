@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@ADCB/hooks": "*",
-    "@ADCB/types": "*",
     "expo": "^52.0.37",
     "expo-constants": "~17.0.7",
     "expo-linear-gradient": "^14.0.2",
@@ -29,6 +28,7 @@
     "react-native-web": "~0.19.10"
   },
   "devDependencies": {
+    "@ADCB/types": "*",
     "@babel/core": "^7.23.7",
     "@expo/webpack-config": "^19.0.0",
     "@types/react": "~18.3.12",
