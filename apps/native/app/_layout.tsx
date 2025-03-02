@@ -20,9 +20,9 @@ const AppLayout = () => {
           <GradientHeader title={options.title ?? "Home"} />
         ),
         headerStyle: {
-          backgroundColor: "transparent", // Ensures no default background interferes
+          backgroundColor: "transparent",
         },
-        headerTitle: "", // Prevents double rendering of default title
+        headerTitle: "",
       }}
     >
       <Stack.Screen name="index" options={{ title: "ADCB Assessment" }} />
@@ -32,7 +32,7 @@ const AppLayout = () => {
 
 const styles = StyleSheet.create({
   header: {
-    height: 60, // ✅ Explicit height for visibility
+    height: 60,
     justifyContent: "center",
     alignItems: "center",
     paddingVertical: 10,
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     color: "white",
-    textAlign: "center", // ✅ Ensures proper alignment
+    textAlign: "center",
   },
 });
 

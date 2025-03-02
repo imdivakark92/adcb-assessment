@@ -1,4 +1,3 @@
-// App.tsx
 import React, { useCallback } from "react";
 import {
   ActivityIndicator,
@@ -7,7 +6,7 @@ import {
   Text,
   View,
 } from "react-native";
-import { LinearGradient } from "expo-linear-gradient"; // Import LinearGradient
+import { LinearGradient } from "expo-linear-gradient";
 import { Post } from "@ADCB/types";
 import { usePosts } from "@ADCB/hooks";
 
@@ -17,7 +16,7 @@ export default function Posts() {
   const renderItem = useCallback(
     ({ item }: { item: Post }) => (
       <LinearGradient
-        colors={["#3b82f6", "#9333ea", "#ec4899"]} // Equivalent to Tailwind's from-blue-500 via-purple-500 to-pink-500
+        colors={["#3b82f6", "#9333ea", "#ec4899"]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.gradientBorder}
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
   },
   gradientBorder: {
     position: "relative",
-    padding: 2, // Creates the gradient border effect
+    padding: 2,
     borderRadius: 12,
     marginBottom: 8,
   },
