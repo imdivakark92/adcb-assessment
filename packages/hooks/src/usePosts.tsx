@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
-import { Post } from "@repo/types";
+import { Post } from "@ADCB/types";
 
 export const usePosts = (): {
   posts: Post[];
