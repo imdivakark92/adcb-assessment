@@ -1,5 +1,12 @@
 # ADCB Assessment: Turborepo with React Native (Expo) and Next.js
 
+## Prerequisites
+
+Ensure you have the following installed:
+
+- Node.js (Recommended: Latest LTS version)
+- Yarn (Install globally if not installed) `npm install -g yarn`
+
 ## What's inside?
 
 This Turborepo includes the following packages/apps:
@@ -13,6 +20,20 @@ This Turborepo includes the following packages/apps:
 - `@ADCB/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+
+## How to Run
+
+- `yarn install`
+- `yarn dev`
+
+Web Application:
+
+Native Application:
+
+Testing:
+
+- `Navigate to packages/hooks`
+- run `yarn test`
 
 ### Utilities
 
